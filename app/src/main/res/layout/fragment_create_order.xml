@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/container" android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CreateOrderFragment">
+
+    <TextView
+        android:id="@+id/textViewNewOrderGoodType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center|left"
+        android:text="Good type:"
+        android:textColor="#4A4A4A"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGoodType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNewOrderGoodType">
+
+        <RadioButton
+            android:id="@+id/radioFurniture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Furniture" />
+
+        <RadioButton
+            android:id="@+id/radioDryGood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dry Goods" />
+
+        <RadioButton
+            android:id="@+id/radioFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Food" />
+
+        <RadioButton
+            android:id="@+id/radioBuildingMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Building Material" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextNewOrderOtherGoodType"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:hint="Other"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupGoodType" />
+
+    <TextView
+        android:id="@+id/textViewNewOrderWeightAndDimension"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center|left"
+        android:text="Weight and dimension:"
+        android:textColor="#4A4A4A"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNewOrderOtherGoodType" />
+
+    <EditText
+        android:id="@+id/editTextNewOrderWeight"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text=""
+        android:hint="Weight"
+        app:layout_constraintTop_toBottomOf="@id/textViewNewOrderWeightAndDimension"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <EditText
+        android:id="@+id/editTextNewOrderWidth"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text=""
+        android:hint="Width"
+        app:layout_constraintTop_toBottomOf="@id/textViewNewOrderWeightAndDimension"
+        app:layout_constraintStart_toEndOf="@id/editTextNewOrderWeight"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <EditText
+        android:id="@+id/editTextNewOrderLength"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text=""
+        android:hint="Length"
+        app:layout_constraintTop_toBottomOf="@id/editTextNewOrderWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="391dp" />
+
+    <EditText
+        android:id="@+id/editTextNewOrderHeight"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text=""
+        android:hint="Height"
+        app:layout_constraintTop_toBottomOf="@id/editTextNewOrderWidth"
+        app:layout_constraintStart_toEndOf="@id/editTextNewOrderLength"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="391dp" />
+
+    <TextView
+        android:id="@+id/textViewNewOrderVhicleType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="Vhicle type:"
+        android:textColor="#4A4A4A"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNewOrderLength" />
+
+    <RadioGroup
+        android:id="@+id/radioVhicleType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNewOrderVhicleType">
+
+        <RadioButton
+            android:id="@+id/radioTruck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Truck" />
+
+        <RadioButton
+            android:id="@+id/radioVan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Van" />
+
+        <RadioButton
+            android:id="@+id/radioRefrigeratedTruck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refrigerated truck" />
+
+        <RadioButton
+            android:id="@+id/radioMiniTruck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mini-truck" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextNewOrderOtherVhicle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:hint="Other"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioVhicleType" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonNewOrderCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_border_white"
+        android:onClick="createOrderClick"
+        android:text="Create order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNewOrderOtherVhicle"
+        tools:layout_editor_absoluteX="166dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

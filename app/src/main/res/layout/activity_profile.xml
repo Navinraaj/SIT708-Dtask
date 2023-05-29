@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ProfileActivity">
+
+    <LinearLayout
+        android:id="@+id/profileLayoutTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/buttonStart"
+            style="@style/TextAppearance.AppCompat"
+            android:layout_marginStart="0dp"
+            android:layout_gravity="start"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitStart"
+            android:background="@drawable/icon_vertical_menu"
+            android:onClick="optionClick"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/profileTextViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" My Profile Information"
+            android:textColor="#4A4A4A"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profileLayoutUserName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/profileLayoutTitle"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/profileTextViewUsername"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Username:"
+            android:textColor="#4A4A4A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileTextViewUsernameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profileLayoutFullName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/profileLayoutUserName"
+        tools:layout_editor_absoluteX="5dp">
+
+        <TextView
+            android:id="@+id/profileTextViewFullName"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:text="Full Name:"
+            android:textColor="#4A4A4A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileTextViewFullNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profileLayoutPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/profileLayoutFullName"
+        tools:layout_editor_absoluteX="5dp">
+
+        <TextView
+            android:id="@+id/profileTextViewPhoneNumber"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:autoSizeMaxTextSize="14sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center|left"
+            android:text="Phone Number:"
+            android:textColor="#4A4A4A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileTextViewPhoneNumberValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profileLayoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="5dp">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogout"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/button_border_white"
+            android:onClick="logoutClick"
+            android:text="LOGOUT" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
