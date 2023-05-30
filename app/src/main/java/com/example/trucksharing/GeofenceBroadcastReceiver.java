@@ -17,12 +17,16 @@ import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 
 public class GeofenceBroadcastReceiver extends BroadcastReceiver {
+    // This class listens for Geofence events (enter, exit, or dwell)
+    // and reacts by sending a notification to the user.
+    // A Geofence is a virtual perimeter set on a real geographical area.
 
     private static final String TAG = "GeofenceBroadcastRecv";
     private static final String CHANNEL_ID = "Geofence Channel";
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        // Called when the BroadcastReceiver gets an Intent it's registered for
         GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
         if (geofencingEvent.hasError()) {
             String errorMessage = Integer.toString(geofencingEvent.getErrorCode());
@@ -44,6 +48,8 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void sendNotification(Context context, String message) {
+        // Create a notification channel if it doesn't exist,
+        // then build and send a notification with the provided message
         createNotificationChannel(context);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -68,6 +74,9 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void createNotificationChannel(Context context) {
+        // Create a notification channel if it doesn't exist.
+        // This is required for notifications on Android 8.0 (Oreo) and higher
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Geofence Channel";
             String description = "Channel for Geofence alerts";

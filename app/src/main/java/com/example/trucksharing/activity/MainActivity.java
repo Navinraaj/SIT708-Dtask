@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         database = new DatabaseHelper(this);
 
+        // Fetch all trucks from the database
+
         List<Truck> trucks = database.fetchAllTrucks();
         if (trucks.size() == 0) {
             // Add Trucks to database
@@ -67,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1234);
 
+        // Bind EditTexts for user input
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextSignupPassword);
+        // If the database is empty, populate it with initial data
+        // Initialize geofencing client
         geofencingClient = LocationServices.getGeofencingClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
@@ -79,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        // Handle the result of permission request
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Check if the permission request was successful
         if (requestCode == 1234) {
@@ -95,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void createGeofences() {
+        // Create and add geofences
+
         GeofencingRequest geofencingRequest = createGeofence();
 
         try {
@@ -130,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private GeofencingRequest createGeofence() {
+        // Create a Geofence object
+
         Geofence geofence = new Geofence.Builder()
                 .setRequestId("Deakin_Burwood_Campus")
                 .setCircularRegion(-37.841265, 145.113075, 1000)
@@ -146,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private PendingIntent getGeofencePendingIntent() {
+        // Get or create a PendingIntent for Geofence transitions
+
         if (geofencePendingIntent != null) {
             return geofencePendingIntent;
         }
@@ -155,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginClick(View view) {
+        // Handle the login button click
 
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
@@ -186,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signupClick(View view) {
+        // Handle the signup button click
         Intent intent = new Intent(MainActivity.this, SignupActivity.class);
         startActivity(intent);
     }

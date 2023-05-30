@@ -39,7 +39,7 @@ public class PlaceActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        // Initialize the AutocompleteSupportFragment.
+        // Initialize the AutocompleteSupportFragment .
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
 

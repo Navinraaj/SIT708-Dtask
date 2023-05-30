@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.trucksharing">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Permissions for location access and internet are requested, necessary for app functionality -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Optional feature: Telephone permission, allowing the app to make phone calls if required -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
+    <!-- Define the application details and settings -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,52 +20,71 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TruckSharing">
 
+        <!-- Receiver for geofence events -->
         <receiver android:name=".GeofenceBroadcastReceiver" />
 
+        <!-- Individual activities within the application -->
+        <!-- PlaceActivity: Provides functionality for searching for a location -->
         <activity
             android:name=".activity.PlaceActivity"
             android:exported="false" />
+
+        <!-- CheckOutActivity: Handles the process of order confirmation and payment -->
         <activity
             android:name=".activity.CheckOutActivity"
             android:exported="false" />
 
-
-
+        <!-- Google Maps API Key for the app -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyARGwNoIjcYgDQZ3vO_85ED_z2F4bdbRRE" />
 
+        <!-- MapViewActivity: Displays the interactive map view -->
         <activity
             android:name=".activity.MapViewActivity"
             android:exported="false" />
+
+        <!-- NewOrderActivity: Handles the creation of new orders -->
         <activity
             android:name=".activity.NewOrderActivity"
             android:exported="false" />
+
+        <!-- ProfileActivity: Manages user profile -->
         <activity
             android:name=".activity.ProfileActivity"
             android:exported="false" />
+
+        <!-- OrdersActivity: Shows the history of user's orders -->
         <activity
             android:name=".activity.OrdersActivity"
             android:exported="false" />
+
+        <!-- HomeActivity: The main screen of the app displaying available trucks -->
         <activity
             android:name=".activity.HomeActivity"
             android:exported="false" />
+
+        <!-- SignupActivity: Manages user registration -->
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />
+
+        <!-- MainActivity: The app's launch activity, the first screen that users see when they open the app -->
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Include Google Play Services version -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <!-- Enable Google Wallet -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
@@ -73,3 +92,8 @@
     </application>
 
 </manifest>
+
+    <!-- Author: Navin -->
+    <!-- Purpose: This XML file defines the overall structure and settings of the Truck Sharing Android app. -->
+    <!-- It requests necessary permissions, defines the application's main settings, -->
+    <!-- and includes the various activities that make up the application. -->

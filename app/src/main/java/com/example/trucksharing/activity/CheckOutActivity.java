@@ -37,13 +37,16 @@ import java.util.Locale;
 
 public class CheckOutActivity extends AppCompatActivity {
 
+    // User ID and fare initialized
     int userId = 0;
     Double fare = 0.0;
 
     private ConfirmOrderViewModel model;
 
+    // Request code for adding to Google Wallet
     private static final int ADD_TO_GOOGLE_WALLET_REQUEST_CODE = 999;
 
+    // Define variables for Google Pay button and text view
     private AppCompatButton googlePayButton;
     private TextView textViewTitle;
 
@@ -53,6 +56,7 @@ public class CheckOutActivity extends AppCompatActivity {
             result -> {
                 switch (result.getResultCode()) {
                     case Activity.RESULT_OK:
+                        // Handle payment success
                         Intent resultData = result.getData();
                         if (resultData != null) {
                             PaymentData paymentData = PaymentData.getFromIntent(result.getData());
@@ -63,25 +67,24 @@ public class CheckOutActivity extends AppCompatActivity {
                         break;
 
                     case Activity.RESULT_CANCELED:
-                        // The user cancelled the payment attempt
+                        // Handle payment cancellation
                         break;
                 }
             });
 
-    /**
-     * Initialize the Google Pay API on creation of the activity
-     *
-     * @see Activity#onCreate(android.os.Bundle)
-     */
-
+    // OnCreate method to initialize the Google Pay API
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_out);
 
+        // Get User ID and fare from the intent
+
         Intent intent = getIntent();
         userId = intent.getExtras().getInt(USER_ID);
         fare = intent.getExtras().getDouble(ORDER_FARE);
+
+        // Initialize Google Pay button and title text view
 
         googlePayButton = findViewById(R.id.buttonGooglePay);
         textViewTitle = findViewById(R.id.textViewGooglePayTitle);
@@ -100,13 +103,19 @@ public class CheckOutActivity extends AppCompatActivity {
         }
     }
 
+    // Method to handle Google Pay availability
     public void requestPayment(View view) {
 
-        // Disables the button to prevent multiple clicks.
+
+        // Disable the button to prevent multiple clicks
         googlePayButton.setClickable(false);
 
+        // Calculate the total price in cents
         long totalPriceCents = (long) (fare * 100);
+
+        // Create the payment task
         final Task<PaymentData> task = model.getLoadPaymentDataTask(totalPriceCents);
+
 
         task.addOnCompleteListener(completedTask -> {
             if (completedTask.isSuccessful()) {
@@ -132,7 +141,10 @@ public class CheckOutActivity extends AppCompatActivity {
         });
     }
 
+    // Method to request payment using Google Pay
     private void handlePaymentSuccess(PaymentData paymentData) {
+
+
         final String paymentInfo = paymentData.toJson();
 
         try {

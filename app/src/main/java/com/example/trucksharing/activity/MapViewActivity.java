@@ -28,19 +28,22 @@ import java.util.Arrays;
 
 public class MapViewActivity extends FragmentActivity {
 
-    ConstraintLayout mapViewContainer;
-    TextView textViewPickupLocation;
-    TextView textViewDropOffLocation;
-    TextView textViewApproxFare;
-    TextView textViewTravelTime;
-    Order order;
-    Double fare = 0.0;
+    ConstraintLayout mapViewContainer; // Container for the map view
+    TextView textViewPickupLocation; // Display for pickup location
+    TextView textViewDropOffLocation; // Display for drop-off location
+    TextView textViewApproxFare; // Display for approximate fare
+    TextView textViewTravelTime; // Display for travel time
+    Order order; // Order details
+    Double fare = 0.0; // Initial fare
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Retrieve the order from the intent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view);
 
+        // Initialize the TextViews and set their texts
         Intent intent = getIntent();
         order = (Order)intent.getExtras().getSerializable("ORDER");
 

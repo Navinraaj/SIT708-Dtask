@@ -115,11 +115,6 @@ public class OrdersActivity extends AppCompatActivity implements  PopupMenu.OnMe
     }
 
     public void showOrderDetails(Order order) {
-//        Fragment fragment = OrderDetailFragment.newInstance(order, user);
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.add(R.id.container, fragment).addToBackStack(null).commit();
-
         Intent intent = new Intent(OrdersActivity.this, MapViewActivity.class);
         intent.putExtra("ORDER", order);
         startActivity(intent);

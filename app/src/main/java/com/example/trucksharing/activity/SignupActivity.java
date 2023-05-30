@@ -20,21 +20,25 @@ import com.example.trucksharing.util.Util;
 
 public class SignupActivity extends AppCompatActivity {
 
-    DatabaseHelper database;
+    DatabaseHelper database; // Database helper to interact with the database
 
-    EditText editTextFullName;
-    EditText editTextUsername;
-    EditText editTextPassword;
-    EditText editTextConfirmPassword;
-    EditText editTextPhoneNumber;
+    EditText editTextFullName; // Input field for full name
+    EditText editTextUsername; // Input field for username
+    EditText editTextPassword; // Input field for password
+    EditText editTextConfirmPassword; // Input field for confirm password
+    EditText editTextPhoneNumber; // Input field for phone number
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+
+        // Initialize database
         database = new DatabaseHelper(this);
 
+        // Initialize EditTexts
         editTextUsername = findViewById(R.id.editTextSignupUsername);
         editTextPassword = findViewById(R.id.editTextSignupPassword);
         editTextConfirmPassword = findViewById(R.id.editTextSignupConfirmPassword);
@@ -42,6 +46,7 @@ public class SignupActivity extends AppCompatActivity {
         editTextPhoneNumber = findViewById(R.id.editTextSignupPhoneNumber);
     }
 
+    // Show a dialog when the add image button is clicked
     public void addImageClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Allow the app to access photos, media and files on your device?");
@@ -57,6 +62,7 @@ public class SignupActivity extends AppCompatActivity {
         alert.show();
     }
 
+    // Handle the create account button click
     public void createAccountClick(View view) {
 
         String fullName = editTextFullName.getText().toString().trim();

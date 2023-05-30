@@ -29,29 +29,34 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    DatabaseHelper database;
 
-    int userId = 0;
-    User user;
+    DatabaseHelper database; // Database helper to interact with the database
 
-    TextView textViewUsername;
-    TextView textViewFullName;
-    TextView textViewPhoneNumber;
+    int userId = 0; // User ID
+    User user; // User object
+
+    TextView textViewUsername; // Display for username
+    TextView textViewFullName; // Display for full name
+    TextView textViewPhoneNumber; // Display for phone number
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        // Initialize TextViews
         textViewUsername = findViewById(R.id.profileTextViewUsernameValue);
         textViewFullName = findViewById(R.id.profileTextViewFullNameValue);
         textViewPhoneNumber = findViewById(R.id.profileTextViewPhoneNumberValue);
 
+        // Initialize database
         database = new DatabaseHelper(this);
 
+        // Get the user ID from the intent
         Intent intent = getIntent();
         userId = intent.getExtras().getInt(USER_ID);
 
+        // Fetch all users from the database and find the user with the matching user ID
         List<User> users = database.fetchAllUsers();
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUserId() == userId) {
@@ -59,16 +64,19 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
             }
         }
 
+        // Set the TextViews with user details
         textViewUsername.setText(user.getUsername());
         textViewFullName.setText(user.getFullName());
         textViewPhoneNumber.setText(user.getPhoneNumber());
     }
 
+    // Log out and return to MainActivity when the logout button is clicked
     public void logoutClick(View view) {
         Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
+    // Create a popup menu when the options button is clicked
     public void optionClick(View view) {
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
@@ -77,6 +85,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         popup.show();
     }
 
+    // Handle menu item clicks
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
@@ -86,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
                 startActivity(homeIntent);
                 return true;
             case R.id.account:
-
+                // Do nothing if account item is clicked as we're already on the ProfileActivity
                 return true;
             case R.id.order:
                 Intent orderIntent = new Intent(ProfileActivity.this, OrdersActivity.class);

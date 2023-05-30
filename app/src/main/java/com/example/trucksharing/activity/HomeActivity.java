@@ -26,27 +26,34 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements  PopupMenu.OnMenuItemClickListener {
 
-    int userId = 0;
 
-    DatabaseHelper database;
+    int userId = 0; // Initialize User ID
 
-    RecyclerView recyclerView;
-    TruckRecyclerViewAdapter recyclerViewAdapter;
+    DatabaseHelper database; // DatabaseHelper instance
 
-    ImageFilterButton buttonAdd;
+    RecyclerView recyclerView; // RecyclerView to display trucks
+    TruckRecyclerViewAdapter recyclerViewAdapter; // Adapter for RecyclerView
 
-    List<Truck> truckList = new ArrayList<>();
+    ImageFilterButton buttonAdd; // Button for adding trucks
+
+    List<Truck> truckList = new ArrayList<>(); // List of trucks
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // Retrieve User ID from intent
         Intent intent = getIntent();
         userId = intent.getExtras().getInt(USER_ID);
 
+        // Initialize DatabaseHelper
         database = new DatabaseHelper(this);
 
+        // Fetch all trucks from the database
         truckList = database.fetchAllTrucks();
+
+        // Initialize RecyclerView and its Adapter
 
         recyclerView = findViewById(R.id.recyclerTrucks);
         recyclerViewAdapter = new TruckRecyclerViewAdapter(truckList, this);
@@ -58,13 +65,13 @@ public class HomeActivity extends AppCompatActivity implements  PopupMenu.OnMenu
         buttonAdd = findViewById(R.id.buttonHomeAdd);
         buttonAdd.bringToFront();
     }
-
+    // Method to handle option click events
     public void optionClick(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_popup, popup.getMenu());
-        popup.show();
+        PopupMenu popup = new PopupMenu(this, view); // Initialize PopupMenu
+        popup.setOnMenuItemClickListener(this); // Set MenuItemClickListener
+        MenuInflater inflater = popup.getMenuInflater(); // Get MenuInflater
+        inflater.inflate(R.menu.menu_popup, popup.getMenu()); // Inflate menu
+        popup.show(); // Show PopupMenu
     }
 
     @Override
@@ -87,27 +94,31 @@ public class HomeActivity extends AppCompatActivity implements  PopupMenu.OnMenu
         }
     }
 
+
+    // Method to handle add click events
     public void addClick(View view) {
         Intent newOrderIntent = new Intent(HomeActivity.this, NewOrderActivity.class);
         newOrderIntent.putExtra(USER_ID, userId);
-        startActivity(newOrderIntent);
+        startActivity(newOrderIntent); // Start NewOrderActivity
     }
 
+    // Method to share truck content
     public void shareContent(Truck truck) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, truck.shareContent());
         sendIntent.setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
-        startActivity(shareIntent);
+        startActivity(shareIntent); // Start Share Intent
     }
 
+    // Handle onBackPressed events
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             this.finish();
         } else {
-            getSupportFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack(); // Pop the FragmentManager backstack
         }
     }
 }

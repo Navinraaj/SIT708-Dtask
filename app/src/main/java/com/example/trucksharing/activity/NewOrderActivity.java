@@ -55,7 +55,6 @@ public class NewOrderActivity extends AppCompatActivity {
     TextView textViewDropOffLocation;
     EditText editTextPickupDate;
     EditText editTextPickupTime;
-
     Place pickupPlace;
     Place dropOffPlace;
 
@@ -143,6 +142,7 @@ public class NewOrderActivity extends AppCompatActivity {
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
+
 
     public void showTimeDialog() {
         final Calendar calendar = Calendar.getInstance();

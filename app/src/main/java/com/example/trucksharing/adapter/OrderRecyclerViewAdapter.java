@@ -21,9 +21,8 @@ import com.example.trucksharing.model.Order;
 import java.util.List;
 
 public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<OrderRecyclerViewAdapter.ViewHolder> {
-
-    private List<Order> orderList;
-    private Context context;
+    private List<Order> orderList; // List of orders to be displayed
+    private Context context; // The activity or application context
 
     public OrderRecyclerViewAdapter(List<Order> orderList, Context context) {
         this.orderList = orderList;
@@ -33,14 +32,17 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<OrderRecycler
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the layout for each row of the RecyclerView
         View itemView = LayoutInflater.from(context).inflate(R.layout.order_row, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Get the current order
         Order order = orderList.get(position);
 
+        // Check if the order has an image name and update the ImageView accordingly
         if (order.getImageName().length() > 0) {
             int resourceId = context.getResources().getIdentifier(order.getImageName(), "drawable",
                     context.getPackageName());
@@ -51,9 +53,11 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<OrderRecycler
             holder.imageView.setImageResource(resourceId);
         }
 
+        // Set the text fields
         holder.textViewName.setText(order.getReceiverName());
         holder.textViewPickupTime.setText(order.getPickupDate() + " " + order.getPickupTime());
 
+        // Set a click listener for the order row
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {

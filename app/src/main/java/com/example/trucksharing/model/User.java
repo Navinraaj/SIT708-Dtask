@@ -3,13 +3,14 @@ package com.example.trucksharing.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    // Class to represent a User in the application.
     private int userId;
     private String username = "";
     private String password = "";
     private String fullName = "";
     private String phoneNumber = "";
     private String avatarName = "";
-
+    // Several constructors to create a User object with different amounts of information
     public User() {
 
     }
@@ -33,7 +34,7 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.avatarName = avatarName;
     }
-
+    // Getter and setter methods for all properties
     public int getUserId() {
         return userId;
     }

@@ -19,8 +19,9 @@ import java.util.List;
 
 public class TruckRecyclerViewAdapter extends RecyclerView.Adapter<TruckRecyclerViewAdapter.ViewHolder> {
 
-    private List<Truck> truckList;
-    private Context context;
+
+    private List<Truck> truckList; // List of trucks to be displayed
+    private Context context; // The activity or application context
 
     public TruckRecyclerViewAdapter(List<Truck> truckList, Context context) {
         this.truckList = truckList;
@@ -36,6 +37,7 @@ public class TruckRecyclerViewAdapter extends RecyclerView.Adapter<TruckRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Get the current truck
         Truck truck = truckList.get(position);
         int resourceId = context.getResources().getIdentifier(truck.getImageName(), "drawable",
                 context.getPackageName());
