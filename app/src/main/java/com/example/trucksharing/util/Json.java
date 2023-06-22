@@ -1,28 +1,30 @@
 package com.example.trucksharing.util;
+
 import android.content.Context;
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 /**
- * Utility class to work with JSON content stored locally.
+ * A utility class for handling JSON data stored locally.
  */
-public class Json {
+public class JsonUtils {
 
     /**
-     * Loads a resource and creates a {@link JSONArray} object with the contents of the binary.
+     * Reads a local file and generates a {@link JSONArray} with its content.
      *
-     * @param context  where the execution is taking place.
-     * @param fileName path that points to the target binary.
-     * @return a {@link JSONArray} object with the contents of the stream.
+     * @param context  the context where the operation is being performed.
+     * @param fileName the path that leads to the targeted file.
+     * @return a {@link JSONArray} containing the data from the file.
      */
-    public static JSONArray readFromFile(Context context, String fileName) {
+    public static JSONArray loadFromFile(Context context, String fileName) {
         try {
-            final InputStream inputStream = context.getAssets().open(fileName);
-            return readFromInputStream(inputStream);
+            final InputStream fileStream = context.getAssets().open(fileName);
+            return generateFromInputStream(fileStream);
 
         } catch (Exception e) {
             return new JSONArray();
@@ -30,16 +32,17 @@ public class Json {
     }
 
     /**
-     * Loads a resource and creates a {@link JSONArray} object with the contents of the binary.
+     * Accesses a resource and creates a {@link JSONArray} with its content.
      *
-     * @param context  where the execution is taking place.
-     * @param resource identifier of the binary in the resource folders.
-     * @return a {@link JSONArray} object with the contents of the stream.
+     * @param context  the context where the operation is being performed.
+     * @param resource the ID of the target resource located in the resource
+     *                 folders.
+     * @return a {@link JSONArray} containing the data from the resource.
      */
-    public static JSONArray readFromResources(Context context, int resource) {
+    public static JSONArray loadFromResources(Context context, int resource) {
         try {
-            final InputStream inputStream = context.getResources().openRawResource(resource);
-            return readFromInputStream(inputStream);
+            final InputStream resourceStream = context.getResources().openRawResource(resource);
+            return generateFromInputStream(resourceStream);
 
         } catch (Exception e) {
             return new JSONArray();
@@ -47,16 +50,16 @@ public class Json {
     }
 
     /**
-     * Create a {@link JSONArray} with the contents of an {@link InputStream} holding
-     * JSON information.
+     * Converts the content of an {@link InputStream} that contains
+     * JSON data into a {@link JSONArray}.
      *
-     * @param inputStream containing the JSON bytes.
-     * @return a {@link JSONArray} object with the contents of the stream.
-     * @throws JSONException if the content could not be parsed.
+     * @param inputStream the stream containing JSON data.
+     * @return a {@link JSONArray} with the data from the stream.
+     * @throws JSONException if there are issues parsing the content.
      */
-    private static JSONArray readFromInputStream(InputStream inputStream) throws JSONException {
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        final String inputString = reader.lines().collect(Collectors.joining());
-        return new JSONArray(inputString);
+    private static JSONArray generateFromInputStream(InputStream inputStream) throws JSONException {
+        final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        final String collectedInput = bufferedReader.lines().collect(Collectors.joining());
+        return new JSONArray(collectedInput);
     }
 }

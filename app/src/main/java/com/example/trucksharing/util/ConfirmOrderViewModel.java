@@ -23,16 +23,16 @@ import org.json.JSONObject;
 
 public class ConfirmOrderViewModel extends AndroidViewModel {
 
-    // A client for interacting with the Google Pay API.
+    // A Google Pay API interaction client.
     private final PaymentsClient paymentsClient;
 
-    // A client to interact with the Google Wallet API
+    // A Google Wallet API interaction client.
     private final PayClient walletClient;
 
-    // LiveData with the result of whether the user can pay using Google Pay
+    // LiveData representing whether the user can utilize Google Pay
     private final MutableLiveData<Boolean> _canUseGooglePay = new MutableLiveData<>();
 
-    // LiveData with the result of whether the user can save passes with Google Wallet
+    // LiveData representing whether the user can store passes with Google Wallet
     private final MutableLiveData<Boolean> _canAddPasses = new MutableLiveData<>();
 
     public ConfirmOrderViewModel(@NonNull Application application) {
@@ -40,22 +40,22 @@ public class ConfirmOrderViewModel extends AndroidViewModel {
         paymentsClient = PaymentsUtil.createPaymentsClient(application);
         walletClient = Pay.getClient(application);
 
-        fetchCanUseGooglePay();
-        fetchCanAddPassesToGoogleWallet();
+        ascertainGooglePayUsage();
+        ascertainPassAdditionCapabilityToGoogleWallet();
     }
 
     public final LiveData<Boolean> canUseGooglePay = _canUseGooglePay;
     public final LiveData<Boolean> canAddPasses = _canAddPasses;
 
-    private void fetchCanUseGooglePay() {
+    private void ascertainGooglePayUsage() {
         final JSONObject isReadyToPayJson = PaymentsUtil.getIsReadyToPayRequest();
         if (isReadyToPayJson == null) {
             _canUseGooglePay.setValue(false);
             return;
         }
 
-        // The call to isReadyToPay is asynchronous and returns a Task. We need to provide an
-        // OnCompleteListener to be triggered when the result of the call is known.
+        // The isReadyToPay call is asynchronous and returns a Task. We attach an
+        // OnCompleteListener to be invoked when the result is known.
         IsReadyToPayRequest request = IsReadyToPayRequest.fromJson(isReadyToPayJson.toString());
         Task<Boolean> task = paymentsClient.isReadyToPay(request);
         task.addOnCompleteListener(
@@ -75,22 +75,21 @@ public class ConfirmOrderViewModel extends AndroidViewModel {
             return null;
         }
 
-        PaymentDataRequest request =
-                PaymentDataRequest.fromJson(paymentDataRequestJson.toString());
+        PaymentDataRequest request = PaymentDataRequest.fromJson(paymentDataRequestJson.toString());
         return paymentsClient.loadPaymentData(request);
     }
 
-    private void fetchCanAddPassesToGoogleWallet() {
+    private void ascertainPassAdditionCapabilityToGoogleWallet() {
         walletClient
                 .getPayApiAvailabilityStatus(PayClient.RequestType.SAVE_PASSES)
                 .addOnSuccessListener(
                         status -> _canAddPasses.setValue(status == PayApiAvailabilityStatus.AVAILABLE))
-                // If the API is not available, we recommend to either:
-                // 1) Hide the save button
-                // 2) Fall back to a different Save Passes integration (e.g. JWT link)
-                // Note that a user might become eligible in the future.
+                // If the API is not available, the recommended options are:
+                // 1) Conceal the save button
+                // 2) Resort to a different Save Passes integration (like JWT link)
+                // Remember that a user's eligibility might change later.
 
-                // Google Play Services is too old. API availability can't be verified.
+                // Google Play Services is outdated. Hence, API availability cannot be checked.
                 .addOnFailureListener(exception -> _canAddPasses.setValue(false));
     }
 
@@ -102,6 +101,6 @@ public class ConfirmOrderViewModel extends AndroidViewModel {
         walletClient.savePassesJwt(objectString, activity, requestCode);
     }
 
-    // Test generic object used to be created against the API
-    public final String genericObjectJwt = "eyJ0eXAiOiAiSldUIiwgImFsZyI6ICJSUzI1NiIsICJraWQiOiAiMTY4M2VjZDA1MmU5NTgyZWZhNGU5YTQxNjVmYzE5N2JjNmJlYTJhMCJ9.eyJpc3MiOiAid2FsbGV0LWxhYi10b29sc0BhcHBzcG90LmdzZXJ2aWNlYWNjb3VudC5jb20iLCAiYXVkIjogImdvb2dsZSIsICJ0eXAiOiAic2F2ZXRvd2FsbGV0IiwgImlhdCI6IDE2NTA1MzI2MjMsICJwYXlsb2FkIjogeyJnZW5lcmljT2JqZWN0cyI6IFt7ImlkIjogIjMzODgwMDAwMDAwMjIwOTUxNzcuZjUyZDRhZjYtMjQxMS00ZDU5LWFlNDktNzg2ZDY3N2FkOTJiIn1dfX0.fYKw6fpLfwwNMi5OGr4ybO3ybuCU7RYjQhw-QM_Z71mfOyv2wFUzf6dKgpspJKQmkiaBWBr1L9n8jq8ZMfj6iOA_9_njfUe9GepCwVLC0nZBDd2EqS3UrBYT7tEmk7W2-Cpy5FJFTt_eiqXBZgwa6vMw6e6mMp-GzSD5_ls39fjOPziboLyG-GDmph3f6UhBkjnUjYyY_FoYdlqkTkCWM7AFPcy-FbRyVDpIaHfVk4eYQi4Vzk0fwxaWWTfP3gSXXT6UJ9aFvaPYs0gnlV2WPVgGGKCMtYHFRGYX1t0WRpN2kbxfO5VuMKWJlz3TCnxp-9Axz-enuCgnq2cLvCk6Tw";
+    // This is a test generic object created for API usage.
+    public final String genericObjectJwt = "e240eXAiOiAiSldUIiwgImF2sZyI6ICJSUzI1NiIsICJraWQiOiAiMTY4M2VjZDA1MmU5NTgyZWZhNGU5YTQxNjVmYzE5N24jNmJlYTJhMCJ9.eyJpcdzbMiOiAid2FsbGV0LWxhfbi10b29sc0BhcHBzcG90LmdzZXJ2dbfWNlYWNjb3VudC5jb20iLCAiYXVkIjogImdvb2dsZSIsICJ0eXAiOiAic2F2ZXRvdsbFsbGV0IiwgImlhdCI6IDE2NTA1MzI2MjMsICJwYXlsb2FkIjogeyJnZW5lcmljT2JqZWN0cyI6IFt7ImdvkIjogIjMzODgwMDAwMDAwMjIwOTUxNzcuZjUyZDRhZjYtMjQxMS00ZDU5LWFlNDktNzg2ZDY3N2FkOTJiIn1dfX0.fYKw6fpLfwwNMi5OGr4ybOadvybuCU7RYjQhw-QM_Z71mfOyv2wFUzf6dKgpspJKQmkiaBWBr1L9n8jq8ZMfj6iOA_9_njfUe9GepCwVLC0nZBdbd2EqS3UrBYT7tEmk7W2-Cpy5FJFTt_eiqXBZgwa6vMw6e6mMp-GzSD5_ls39fjOPziboLyG-GDmph3f6UhBkjnUjYyY_FoYdlqkTkCWad7AFPcy-FbRyVDpIaHfVk4eYQi4Vzk0fwxaWWTfP3gSXXT6UJ9aFvaPYs0gnlV2WPVgGGKCMtYHFRGYX1t0WRpN2kbxfO5VuMKWJlz3TCnxp-9Axz-enuCgnq2cLvCk6Tw";
 }
