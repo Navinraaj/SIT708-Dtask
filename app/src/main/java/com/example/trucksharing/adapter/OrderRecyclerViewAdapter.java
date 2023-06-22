@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trucksharing.ItemClickListener;
 import com.example.trucksharing.R;
-import com.example.trucksharing.activity.HomeActivity;
-import com.example.trucksharing.activity.OrdersActivity;
+import com.example.trucksharing.fragment.activity.OrdersActivity;
 import com.example.trucksharing.model.Order;
 
 import java.util.List;

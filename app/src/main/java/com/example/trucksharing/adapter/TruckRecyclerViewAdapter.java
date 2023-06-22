@@ -12,7 +12,7 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trucksharing.R;
-import com.example.trucksharing.activity.HomeActivity;
+import com.example.trucksharing.fragment.activity.HomeActivity;
 import com.example.trucksharing.model.Truck;
 
 import java.util.List;

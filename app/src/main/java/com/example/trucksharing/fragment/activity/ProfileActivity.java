@@ -1,8 +1,7 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 
 import static com.example.trucksharing.util.Util.USER_ID;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
@@ -10,22 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trucksharing.R;
-import com.example.trucksharing.adapter.TruckRecyclerViewAdapter;
 import com.example.trucksharing.data.DatabaseHelper;
-import com.example.trucksharing.model.Truck;
 import com.example.trucksharing.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 

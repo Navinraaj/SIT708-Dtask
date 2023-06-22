@@ -2,13 +2,10 @@ package com.example.trucksharing.fragment;
 
 import static com.example.trucksharing.util.Util.DROP_OFF_LAT;
 import static com.example.trucksharing.util.Util.DROP_OFF_LNG;
-import static com.example.trucksharing.util.Util.ORDER_PICKUP_LOCATION;
 import static com.example.trucksharing.util.Util.PICKUP_LAT;
 import static com.example.trucksharing.util.Util.PICKUP_LNG;
-import static com.example.trucksharing.util.Util.USER_ID;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,12 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,12 +26,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.trucksharing.R;
-import com.example.trucksharing.activity.HomeActivity;
-import com.example.trucksharing.activity.NewOrderActivity;
-import com.example.trucksharing.activity.OrdersActivity;
-import com.example.trucksharing.activity.SignupActivity;
+import com.example.trucksharing.fragment.activity.NewOrderActivity;
 import com.example.trucksharing.model.Order;
-import com.example.trucksharing.util.*;
 
 /**
  * A simple {@link Fragment} subclass.

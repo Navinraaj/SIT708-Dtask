@@ -5,6 +5,14 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <!-- Optional feature: Telephone permission, allowing the app to make phone calls if required -->
     <uses-feature
@@ -26,12 +34,12 @@
         <!-- Individual activities within the application -->
         <!-- PlaceActivity: Provides functionality for searching for a location -->
         <activity
-            android:name=".activity.PlaceActivity"
+            android:name=".fragment.activity.PlaceActivity"
             android:exported="false" />
 
         <!-- CheckOutActivity: Handles the process of order confirmation and payment -->
         <activity
-            android:name=".activity.CheckOutActivity"
+            android:name=".fragment.activity.CheckOutActivity"
             android:exported="false" />
 
         <!-- Google Maps API Key for the app -->
@@ -41,37 +49,37 @@
 
         <!-- MapViewActivity: Displays the interactive map view -->
         <activity
-            android:name=".activity.MapViewActivity"
+            android:name=".fragment.activity.MapViewActivity"
             android:exported="false" />
 
         <!-- NewOrderActivity: Handles the creation of new orders -->
         <activity
-            android:name=".activity.NewOrderActivity"
+            android:name=".fragment.activity.NewOrderActivity"
             android:exported="false" />
 
         <!-- ProfileActivity: Manages user profile -->
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".fragment.activity.ProfileActivity"
             android:exported="false" />
 
         <!-- OrdersActivity: Shows the history of user's orders -->
         <activity
-            android:name=".activity.OrdersActivity"
+            android:name=".fragment.activity.OrdersActivity"
             android:exported="false" />
 
         <!-- HomeActivity: The main screen of the app displaying available trucks -->
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".fragment.activity.HomeActivity"
             android:exported="false" />
 
         <!-- SignupActivity: Manages user registration -->
         <activity
-            android:name=".activity.SignupActivity"
+            android:name=".fragment.activity.SignupActivity"
             android:exported="false" />
 
         <!-- MainActivity: The app's launch activity, the first screen that users see when they open the app -->
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".fragment.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 
 import static android.Manifest.permission.CALL_PHONE;
 import static com.example.trucksharing.util.Util.ORDER_FARE;
@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.example.trucksharing.R;
 import com.example.trucksharing.fragment.MapsFragment;
 import com.example.trucksharing.model.Order;
-import com.example.trucksharing.util.Constants;
 
 import java.util.Arrays;
 

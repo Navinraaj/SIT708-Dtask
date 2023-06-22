@@ -1,6 +1,4 @@
-package com.example.trucksharing.activity;
-
-import static com.example.trucksharing.util.Util.USER_ID;
+package com.example.trucksharing.fragment.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;

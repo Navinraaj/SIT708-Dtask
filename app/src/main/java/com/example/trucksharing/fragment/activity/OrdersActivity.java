@@ -1,13 +1,10 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 
 import static com.example.trucksharing.util.Util.USER_ID;
 import com.example.trucksharing.model.User;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +19,6 @@ import android.widget.TextView;
 import com.example.trucksharing.adapter.OrderRecyclerViewAdapter;
 import com.example.trucksharing.R;
 import com.example.trucksharing.data.DatabaseHelper;
-import com.example.trucksharing.fragment.OrderDetailFragment;
 import com.example.trucksharing.model.Order;
 
 import java.util.ArrayList;

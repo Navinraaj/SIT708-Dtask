@@ -1,4 +1,4 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 
 import static com.example.trucksharing.util.Util.ORDER_FARE;
 import static com.example.trucksharing.util.Util.USER_ID;
@@ -17,7 +17,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 

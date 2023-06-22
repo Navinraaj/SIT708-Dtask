@@ -1,4 +1,4 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 import static com.example.trucksharing.util.Util.DROP_OFF_CODE;
 import static com.example.trucksharing.util.Util.PICK_UP_CODE;
 

@@ -1,4 +1,4 @@
-package com.example.trucksharing.activity;
+package com.example.trucksharing.fragment.activity;
 
 import static com.example.trucksharing.util.Util.*;
 
@@ -12,14 +12,12 @@ import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.PopupMenu;
 
 import com.example.trucksharing.R;
 import com.example.trucksharing.adapter.TruckRecyclerViewAdapter;
 import com.example.trucksharing.data.DatabaseHelper;
 import com.example.trucksharing.model.Truck;
-import com.example.trucksharing.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

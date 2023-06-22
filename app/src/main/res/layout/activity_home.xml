@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HomeActivity">
+    tools:context=".fragment.activity.HomeActivity">
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/buttonHomeOption"
