@@ -26,12 +26,10 @@ public class SignupActivity extends AppCompatActivity {
     EditText editTextConfirmPassword; // Input field for confirm password
     EditText editTextPhoneNumber; // Input field for phone number
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
 
         // Initialize database
         database = new DatabaseHelper(this);
@@ -97,12 +95,12 @@ public class SignupActivity extends AppCompatActivity {
         // Ignore Avatar in this version
 
         User user = new User(username, password, fullName, phoneNumber);
-        int insertedUserId = (int)database.insertUser(user);
+        int insertedUserId = (int) database.insertUser(user);
 
         if (insertedUserId >= 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Congratulations!");
-            builder.setMessage("You have registered successfully");
+            builder.setMessage("You have successfully registered yourself for Truck Sharing app");
             builder.setCancelable(false);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {

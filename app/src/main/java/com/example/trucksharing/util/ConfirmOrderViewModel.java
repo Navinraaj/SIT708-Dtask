@@ -37,7 +37,7 @@ public class ConfirmOrderViewModel extends AndroidViewModel {
 
     public ConfirmOrderViewModel(@NonNull Application application) {
         super(application);
-        paymentsClient = PaymentsUtil.createPaymentsClient(application);
+        paymentsClient = PaymentsUtil.initializePaymentsClient(application);
         walletClient = Pay.getClient(application);
 
         ascertainGooglePayUsage();
@@ -48,7 +48,7 @@ public class ConfirmOrderViewModel extends AndroidViewModel {
     public final LiveData<Boolean> canAddPasses = _canAddPasses;
 
     private void ascertainGooglePayUsage() {
-        final JSONObject isReadyToPayJson = PaymentsUtil.getIsReadyToPayRequest();
+        final JSONObject isReadyToPayJson = PaymentsUtil.readyToPayRequest();
         if (isReadyToPayJson == null) {
             _canUseGooglePay.setValue(false);
             return;

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.example.trucksharing.model.Order;
 import com.example.trucksharing.model.Truck;
 import com.example.trucksharing.model.User;
-import com.example.trucksharing.util.Util;
+import com.example.trucksharing.util.*;
 
 import java.util.ArrayList;
 import java.util.List;

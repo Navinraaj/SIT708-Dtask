@@ -24,8 +24,7 @@ import com.example.trucksharing.model.Order;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class OrdersActivity extends AppCompatActivity implements  PopupMenu.OnMenuItemClickListener {
+public class OrdersActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     int userId = 0;
     User user;
@@ -62,13 +61,14 @@ public class OrdersActivity extends AppCompatActivity implements  PopupMenu.OnMe
         recyclerViewAdapter = new OrderRecyclerViewAdapter(orderList, this);
         recyclerView.setAdapter(recyclerViewAdapter);
 
-        LinearLayoutManager topLayoutManager = new LinearLayoutManager(OrdersActivity.this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager topLayoutManager = new LinearLayoutManager(OrdersActivity.this,
+                LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(topLayoutManager);
 
         if (orderList.size() == 0) {
             AlertDialog alertDialog = new AlertDialog.Builder(OrdersActivity.this).create();
             alertDialog.setTitle("");
-            alertDialog.setMessage("You have no orders");
+            alertDialog.setMessage("Currently there is no Present Order for you.");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                     (dialog, which) -> dialog.dismiss());
             alertDialog.show();

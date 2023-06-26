@@ -1,3 +1,5 @@
+package com.example.trucksharing.util;
+
 public class Util {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "VehicleRental";
@@ -13,10 +15,12 @@ public class Util {
     public static final String USER_PHONENUMBER = "phone";
     public static final String USER_AVATARNAME = "profile_picture";
 
-    public static final String VEHICLE_ID = "vehicle_id";
-    public static final String VEHICLE_NAME = "vehicle_name";
-    public static final String VEHICLE_IMAGE_NAME = "vehicle_picture";
-    public static final String VEHICLE_STATUS = "availability_status";
+    public static final String TRUCK_ID = "vehicle_id";
+    public static final String TRUCK_NAME ="vehicle_name" ;
+
+    public static final String TABLE_NAME_TRUCK = "vehicle_name";
+    public static final String TRUCK_IMAGE_NAME = "vehicle_picture";
+    public static final String TRUCK_STATUS = "availability_status";
 
     public static final String ORDER_ID = "order_id";
     public static final String ORDER_RECEIVER_NAME = "customer_name";
@@ -43,4 +47,5 @@ public class Util {
     public static final int LOCATION_REQUEST_CODE = 1000;
     public static final int PICK_UP_CODE = 2000;
     public static final int DROP_OFF_CODE = 3000;
+    public static final String ORDER_GOOD_TYPE = "test";
 }

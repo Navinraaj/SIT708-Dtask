@@ -18,9 +18,9 @@ import java.math.RoundingMode;
  * Please check the documentation to understand more and feel free to delete
  * irrelevant ones for your implementation.
  */
-public class PaymentHelper {
+public class PaymentsUtil {
 
-    public static final BigDecimal PENNIES_PER_DOLLAR = new BigDecimal(100);
+    public static final BigDecimal CENTS_IN_A_UNIT = new BigDecimal(100);
 
     /**
      * Builds a basic Google Pay API request object with properties common to all
@@ -254,7 +254,7 @@ public class PaymentHelper {
      *      href=
      *      "https://developers.google.com/pay/api/android/reference/object#PaymentDataRequest">PaymentDataRequest</a>
      */
-    public static JSONObject paymentDataRequest(long priceCents) {
+    public static JSONObject getPaymentDataRequest(long priceCents) {
 
         final String price = convertCentsToString(priceCents);
 

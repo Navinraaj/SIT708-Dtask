@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * A utility class for handling JSON data stored locally.
  */
-public class JsonUtils {
+public class Json {
 
     /**
      * Reads a local file and generates a {@link JSONArray} with its content.
